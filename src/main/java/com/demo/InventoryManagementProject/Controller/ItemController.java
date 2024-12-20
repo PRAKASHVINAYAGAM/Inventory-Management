@@ -14,11 +14,10 @@ import java.util.List;
 @RequestMapping("/api/items")
 public class ItemController {
 
+  @Autowired
   private final ItemService itemService;
 
-  public ItemController(ItemService itemService) {
-      this.itemService = itemService;
-  }
+
 
   // Get item by ID
   @GetMapping("/{id}")
@@ -47,7 +46,7 @@ public class ItemController {
       Item updatedItem = itemService.updateItem(id, item);
       return new ResponseEntity<>(updatedItem, HttpStatus.OK);
   }
-
+//
   // Delete an item
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
